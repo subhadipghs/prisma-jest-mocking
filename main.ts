@@ -1,3 +1,10 @@
-const message: string = "hello world";
+function main() {
+  const message: string = "hello world";
+  return message;
+}
 
-console.log(message);
+if (require.main === module) {
+  console.log(main());
+}
+
+export { main };
