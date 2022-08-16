@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node dist/main.js",
+    "build": "tsc .",
+    "start:dev": "ts-node main.ts",
+    "ts:init": "npx tsc --init"
+  },
   "dependencies": {
     "prisma": "^4.2.1",
     "typescript": "^4.7.4"
