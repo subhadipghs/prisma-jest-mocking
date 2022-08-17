@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node dist/main.js",
     "build": "tsc",
+    "seeds": "ts-node ./prisma/seed.ts",
     "migrate": "prisma migrate --name init",
     "migrate:dev": "prisma migrate dev --name init",
     "generate": "prisma generate",
