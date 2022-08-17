@@ -1,18 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { users } from "./fixtures/users.fixture";
-import { getPrimsaClient } from "./get-primsa-client";
-
-async function initalizeMockUsers(primsa: PrismaClient): Promise<void> {
-  const usersWithoutIds = users.map(({ email, name }) => {
-    return {
-      name,
-      email,
-    };
-  });
-  await primsa.user.createMany({
-    data: usersWithoutIds,
-  });
-}
+import { getPrimsaClient } from "./prisma/get-primsa-client";
 
 async function main(primsa: PrismaClient): Promise<string[]> {
   await primsa.$connect();
