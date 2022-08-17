@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/main.js",
-    "build": "tsc .",
+    "build": "tsc",
     "migrate": "prisma migrate --name init",
     "migrate:dev": "prisma migrate dev --name init",
     "generate": "prisma generate",
@@ -26,7 +26,10 @@
     "@types/jest": "^28.1.7",
     "@types/node": "^18.7.5",
     "jest": "^28.1.3",
+    "jest-ts-auto-mock": "^2.1.0",
+    "ts-auto-mock": "^3.6.2",
     "ts-jest": "^28.0.8",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "ttypescript": "^1.5.13"
   }
 }

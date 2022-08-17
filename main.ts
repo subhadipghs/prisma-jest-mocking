@@ -1,28 +1,33 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import { users } from "./fixtures/users.fixture";
 import { getPrimsaClient } from "./get-primsa-client";
 
-const primsa = getPrimsaClient();
-
 async function initalizeMockUsers(primsa: PrismaClient): Promise<void> {
-  const users = [
-    { name: "User 1", email: "user1@gmail.com" },
-    { name: "User 2", email: "user2@gmail.com" },
-  ];
+  const usersWithoutIds = users.map(({ email, name }) => {
+    return {
+      name,
+      email,
+    };
+  });
   await primsa.user.createMany({
-    data: users,
+    data: usersWithoutIds,
   });
 }
 
-async function main() {
+async function main(primsa: PrismaClient): Promise<string[]> {
   await primsa.$connect();
-  await initalizeMockUsers(primsa);
-  const users = await primsa.user.findMany();
+  const users = await primsa.user.findMany({
+    select: {
+      email: true,
+    },
+  });
   await primsa.$disconnect();
-  return users;
+  return users.map((user) => user.email);
 }
 
 if (require.main === module) {
-  main().then(console.log).catch(console.error);
+  const primsa = getPrimsaClient();
+  main(primsa).then(console.log).catch(console.error);
 }
 
 export { main };
