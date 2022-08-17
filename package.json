@@ -6,12 +6,19 @@
   "scripts": {
     "start": "node dist/main.js",
     "build": "tsc .",
+    "migrate": "prisma migrate --name init",
+    "migrate:dev": "prisma migrate dev --name init",
+    "generate": "prisma generate",
     "start:dev": "ts-node main.ts",
     "ts:init": "npx tsc --init",
     "test": "jest",
     "test:watch": "jest --watch"
   },
+  "primsa": {
+    "schema": "prisma/schema.prisma"
+  },
   "dependencies": {
+    "@prisma/client": "^4.2.1",
     "prisma": "^4.2.1",
     "typescript": "^4.7.4"
   },
