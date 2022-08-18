@@ -8,6 +8,7 @@ const config: Config.InitialOptions = {
   rootDir: "./",
   coverageDirectory: "./coverage",
   coveragePathIgnorePatterns: ["/node_modules"],
+  testRegex: ".(test|spec).ts",
   transform: {
     ".(ts|tsx)": "ts-jest",
   },
